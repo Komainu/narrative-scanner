@@ -1,13 +1,18 @@
 {
+  "accountAssociation": {
+    "header": "...",
+    "payload": "...",
+    "signature": "..."
+  },
   "miniapp": {
     "version": "1",
     "name": "Narrative Scanner",
-    "subtitle": "See how topics are discussed",
-    "description": "Visualizes bullish, neutral, and bearish narratives without conclusions or predictions.",
-    "iconUrl": "https://YOUR_APP_URL/icon.png",
-    "homeUrl": "https://YOUR_APP_URL",
-    "splashImageUrl": "https://YOUR_APP_URL/splash.png",
-    "splashBackgroundColor": "#0f172a",
+    "subtitle": "Scan how topics are discussed",
+    "description": "Scans bullish, neutral, and bearish narratives around a topic. No conclusions, no predictions.",
+    "iconUrl": "https://narrative-scanner.vercel.app/icon.png",
+    "splashImageUrl": "https://narrative-scanner.vercel.app/splash.png",
+    "splashBackgroundColor": "#0F172A",
+    "homeUrl": "https://narrative-scanner.vercel.app",
     "primaryCategory": "tools",
     "tags": ["narrative", "analysis", "information", "ai"]
   }
