@@ -1,19 +1,19 @@
 {
-  "accountAssociation": {
-    "header": "...",
-    "payload": "...",
-    "signature": "..."
-  },
   "miniapp": {
     "version": "1",
     "name": "Narrative Scanner",
-    "subtitle": "Scan how topics are discussed",
-    "description": "Scans bullish, neutral, and bearish narratives around a topic. No conclusions, no predictions.",
-    "iconUrl": "https://narrative-scanner.vercel.app/icon.png",
-    "splashImageUrl": "https://narrative-scanner.vercel.app/splash.png",
-    "splashBackgroundColor": "#0F172A",
-    "homeUrl": "https://narrative-scanner.vercel.app",
+    "subtitle": "Visualize topic narratives",
+    "description": "Shows how topics are discussed: bullish, neutral, bearish. No predictions.",
+    "iconUrl": "https://YOUR_DOMAIN.com/icon.png",
+    "splashImageUrl": "https://YOUR_DOMAIN.com/splash.png",
+    "splashBackgroundColor": "#ffffff",
+    "homeUrl": "https://YOUR_DOMAIN.com",
     "primaryCategory": "tools",
-    "tags": ["narrative", "analysis", "information", "ai"]
+    "tags": ["AI", "analytics", "narratives", "information"]
+  },
+  "accountAssociation": {
+    "header": "<YOUR_HEADER>",
+    "payload": "<YOUR_PAYLOAD>",
+    "signature": "<YOUR_SIGNATURE>"
   }
 }
