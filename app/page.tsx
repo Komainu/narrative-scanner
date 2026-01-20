@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+import Head from "next/head"; // ← ここを追加
 
 export default function Page() {
   const [topic, setTopic] = useState("");
@@ -20,35 +22,44 @@ export default function Page() {
   }
 
   return (
-    <main style={{ padding: 16, fontFamily: "system-ui" }}>
-      <h1>Narrative Scanner</h1>
-      <p style={{ fontSize: 13, opacity: 0.7 }}>
-        Visualizes how a topic is being discussed. No conclusions, no predictions.
-      </p>
+    <>
+      <Head>
+        <title>Narrative Scanner</title>
+        <meta property="og:title" content="Narrative Scanner" />
+        <meta property="og:description" content="Visualize topic narratives" />
+        <meta property="og:image" content="/og.png" />
+      </Head>
 
-      <input
-        value={topic}
-        onChange={(e) => setTopic(e.target.value)}
-        placeholder="Enter a topic (e.g. Bitcoin ETF)"
-        style={{ width: "100%", padding: 8, marginTop: 8 }}
-      />
+      <main style={{ padding: 16, fontFamily: "system-ui" }}>
+        <h1>Narrative Scanner</h1>
+        <p style={{ fontSize: 13, opacity: 0.7 }}>
+          Visualizes how a topic is being discussed. No conclusions, no predictions.
+        </p>
 
-      <button
-        onClick={run}
-        disabled={!topic || loading}
-        style={{ marginTop: 8 }}
-      >
-        {loading ? "Scanning…" : "Scan Narratives"}
-      </button>
+        <input
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          placeholder="Enter a topic (e.g. Bitcoin ETF)"
+          style={{ width: "100%", padding: 8, marginTop: 8 }}
+        />
 
-      {data && (
-        <div style={{ marginTop: 16 }}>
-          <Section title="🟢 Bullish Narratives" items={data.bullish} />
-          <Section title="🟡 Neutral Narratives" items={data.neutral} />
-          <Section title="🔴 Bearish Narratives" items={data.bearish} />
-        </div>
-      )}
-    </main>
+        <button
+          onClick={run}
+          disabled={!topic || loading}
+          style={{ marginTop: 8 }}
+        >
+          {loading ? "Scanning…" : "Scan Narratives"}
+        </button>
+
+        {data && (
+          <div style={{ marginTop: 16 }}>
+            <Section title="🟢 Bullish Narratives" items={data.bullish} />
+            <Section title="🟡 Neutral Narratives" items={data.neutral} />
+            <Section title="🔴 Bearish Narratives" items={data.bearish} />
+          </div>
+        )}
+      </main>
+    </>
   );
 }
 
