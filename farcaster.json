@@ -1,19 +1,9 @@
 {
-  "miniapp": {
-    "version": "1",
-    "name": "Narrative Scanner",
-    "subtitle": "Visualize topic narratives",
-    "description": "Shows how topics are discussed: bullish, neutral, bearish. No predictions.",
-    "iconUrl": "https://YOUR_DOMAIN.com/icon.png",
-    "splashImageUrl": "https://YOUR_DOMAIN.com/splash.png",
-    "splashBackgroundColor": "#ffffff",
-    "homeUrl": "https://YOUR_DOMAIN.com",
-    "primaryCategory": "tools",
-    "tags": ["AI", "analytics", "narratives", "information"]
-  },
-  "accountAssociation": {
-    "header": "<YOUR_HEADER>",
-    "payload": "<YOUR_PAYLOAD>",
-    "signature": "<YOUR_SIGNATURE>"
-  }
+  "name": "Narrative Scanner",
+  "description": "Scan bullish / neutral / bearish narratives",
+  "iconUrl": "https://YOUR_APP_URL/og.png",
+  "homeUrl": "https://YOUR_APP_URL",
+  "splashImageUrl": "https://YOUR_APP_URL/og.png",
+  "splashBackgroundColor": "#ffffff",
+  "primaryCategory": "tools"
 }
