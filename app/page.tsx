@@ -1,71 +1,38 @@
 "use client";
-
 import { useState } from "react";
 
 export default function Page() {
-  const [topic, setTopic] = useState("");
-  const [data, setData] = useState<{ bullish: string[], neutral: string[], bearish: string[] } | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [text, setText] = useState("");
+  const [result, setResult] = useState<string | null>(null);
 
-  async function run() {
-    setLoading(true);
-    setData(null);
-    try {
-      const res = await fetch("/api/scan", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic }),
-      });
-      const json = await res.json();
-      setData(json);
-    } catch (err) {
-      console.error(err);
-      alert("APIエラーが発生しました");
+  const scan = () => {
+    const t = text.toLowerCase();
+    if (t.includes("approve") || t.includes("inflow") || t.includes("record")) {
+      setResult("🟢 Bullish: strong positive narrative");
+    } else if (t.includes("delay") || t.includes("concern") || t.includes("risk")) {
+      setResult("🔴 Bearish: skeptical narrative");
+    } else {
+      setResult("🟡 Neutral: mixed or unclear narrative");
     }
-    setLoading(false);
-  }
+  };
 
   return (
-    <main style={{ padding: 16, fontFamily: "system-ui" }}>
+    <main style={{ padding: 20 }}>
       <h1>Narrative Scanner</h1>
-      <p style={{ fontSize: 13, opacity: 0.7 }}>
-        Visualizes how a topic is being discussed.
-      </p>
+      <p>Visualizes how a topic is being discussed.</p>
 
       <input
-        value={topic}
-        onChange={(e) => setTopic(e.target.value)}
-        placeholder="Enter a topic (e.g. Bitcoin ETF)"
-        style={{ width: "100%", padding: 8, marginTop: 8 }}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="e.g. Bitcoin ETF inflow"
+        style={{ width: "100%", padding: 8 }}
       />
-      <button
-        onClick={run}
-        disabled={!topic || loading}
-        style={{ marginTop: 8 }}
-      >
-        {loading ? "Scanning…" : "Scan Narratives"}
+
+      <button onClick={scan} style={{ marginTop: 10 }}>
+        Scan Narratives
       </button>
 
-      {data && (
-        <div style={{ marginTop: 16 }}>
-          <Section title="🟢 Bullish" items={data.bullish} />
-          <Section title="🟡 Neutral" items={data.neutral} />
-          <Section title="🔴 Bearish" items={data.bearish} />
-        </div>
-      )}
+      {result && <p style={{ marginTop: 20 }}>{result}</p>}
     </main>
-  );
-}
-
-function Section({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div style={{ marginBottom: 12 }}>
-      <h3>{title}</h3>
-      <ul>
-        {items.map((x, i) => (
-          <li key={i}>{x}</li>
-        ))}
-      </ul>
-    </div>
   );
 }
